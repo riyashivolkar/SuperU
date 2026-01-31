@@ -40,7 +40,7 @@ export default function PricingPage() {
             <table className="w-full table-fixed border-collapse text-left">
               {/* Sticky Header */}
               <thead className="sticky top-0 z-50 bg-[#080808]/95 backdrop-blur border-b border-[#41acd3]/30">
-                <tr>
+                <tr className="">
                   <th className="p-3 md:p-6 w-[28%] uppercase text-left text-[#FAF9F6]/60 font-medium text-[10px] md:text-sm border-r border-white/5">
                     Features
                   </th>
@@ -48,12 +48,27 @@ export default function PricingPage() {
                   {plans.map((plan) => (
                     <th
                       key={plan}
-                      className={`p-3 md:p-6 text-center border-r border-white/5 text-[10px] md:text-sm font-medium ${
+                      className={`p-3 md:p-6  md:pt-12 pt-10    text-center border-r border-white/5 text-[10px] md:text-sm font-medium relative ${
                         plan === "Pro"
-                          ? "bg-[#41acd3]/[0.06] text-[#41acd3]"
+                          ? "bg-[#41acd3]/[0.06] text-[#41acd3] "
                           : ""
                       }`}
                     >
+                      {/* POPULAR BADGE */}
+                      {plan === "Pro" && (
+                        <div
+                          className="
+                            absolute md:top-3 top-4   left-1/2 -translate-x-1/2 text-[6px]
+                            md:text-[9px] md:px-3 px-1 py-1 rounded-full
+                            bg-gradient-to-r from-[#41acd3] to-[#2a7e9c]
+                            text-white font-black uppercase
+                            shadow-md
+                          "
+                        >
+                          Popular
+                        </div>
+                      )}
+
                       {plan}
                     </th>
                   ))}
@@ -77,7 +92,7 @@ export default function PricingPage() {
                     {/* Feature rows */}
                     {group.rows.map((row, rIdx) => (
                       <tr key={`${group.section}-${rIdx}`}>
-                        <td className="px-3 md:px-6 py-4 border-r border-white/5  text-[10px] md:text-sm">
+                        <td className="px-3 md:px-6 py-4 border-r border-white/5 text-[10px] md:text-sm">
                           {row[0]}
                         </td>
 
